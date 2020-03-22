@@ -1,0 +1,38 @@
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+}
+
+.loading-img{
+    margin-top: 20vh;
+    height: 30vh;
+
+}
+
+.msg{
+    width: 60%;
+    margin: auto;
+}
+
+
+
+.top-title{
+    height: 250px;
+}
+
+form{
+    background-color: white;
+    padding: 15px;
+
+}
+.fas{
+    color: #ff9a30 ; 
+ }
+
+ .allow-position{
+     padding-top: 25px;
+ }

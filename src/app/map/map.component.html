@@ -1,0 +1,91 @@
+
+
+<div class="map" id="map"></div>
+<div class="bottom-btn-block">
+    <button type="button" class="btn btn-danger btn-rnd" routerLink="/declaration" >Je suis malade <i class="fas fa-medkit"></i></button>
+</div>
+
+<div class="my-position">
+    <button type="button" class="btn btn-primary btn-rnd" (click)="getMyPosition()" >MA POSITION <i class="fas fa-street-view"></i></button>
+</div>
+
+
+
+<div class="legende">
+    <div class="legend-box"> 
+        <div class="legende-box confirmed"></div>
+        CAS CONFIRMÉ
+    </div> 
+    <div class="legend-box"> 
+        <div class="legende-box suspected"></div>
+        CAS SUSPECTS
+        
+    </div> 
+    <div class="legend-box"> 
+        <div class="legende-box new"></div> NOUVEAU CAS
+        
+    </div> 
+
+    <a class="about-l" routerLink="/about">À propos des<br/> développeurs d'applications.</a>
+
+</div>
+
+
+<!--<div class="search-zone">
+    <div class="serach-bow">
+        <input type="search" class="form-control" placeholder="Recherche par numéro de téléphone,nom" [(ngModel)]="searchQuery" (keyup)="searchFor($event)">
+    </div>
+    <div class="search-result" *ngIf="seachInfections.length !=0">
+        <table class="table">
+            <tr *ngFor=" let infect of seachInfections ">
+                <td>
+                    <a [routerLink]="['/infected/'+infect+id ]">{{ infect.data.userinformations.fullname}}<br/>
+                    <small>{{ infect.data.userinformations.phone}}</small></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>-->
+
+
+<div class="showLatestInefect-bloc" *ngIf="! showLatestBloc">
+    <button class="btn btn-sm btn-secondary" (click)="toggleLatest()">AFFICHER LA LISTE DES DÉTAILS</button>
+</div>
+
+<div class="latest-infections" *ngIf="showLatestBloc">
+    <div class="latest-infection-list " style="position: relative;">
+        <div (click)="toggleLatest()" class="closebtn"><i class="fas fa-times"></i></div>
+        <div  *ngFor="let infect of infectionVisualList " class="infection-bloc">
+            <div *ngIf="infect.stat==2">
+                <strong class="color-conf">CAS CONFIRMÉ<span *ngIf="infect.userinformations.region!=null"> ({{infect.userinformations.region}})</span> </strong>
+            </div>
+            <div *ngIf="infect.stat==1">
+                <strong class="color-sus">CAS SUSPECTS<span *ngIf="infect.userinformations.region!=null"> ({{infect.userinformations.region}})</span> </strong>
+            </div>
+            <div *ngIf="infect.stat==0">
+                <strong class="color-new">NOUVEAU CAS<span *ngIf="infect.userinformations.region!=null"> ({{infect.userinformations.region}})</span> </strong>
+            </div>
+            <strong>{{ infect.addDate.toDate() | date:'medium' }}</strong><br/>
+            <strong> <span *ngIf="infect.userinformations.sex==1">MÂLE</span> <span *ngIf="infect.userinformations.sex==2">FEMELLE</span>  {{ infect.userinformations.age }} ans</strong><br/>
+            <button class="btn btn-sm btn-secondary" (click)="flyToPosition(infect.position)">VOIR SUR LA CARTE</button>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+
+<div class="small-stat-block" routerLink="/statistic">
+    <app-statistic></app-statistic>
+</div>
+
+
+<div class="serverIsFull" *ngIf="serverIsFull">
+    <div class="container my-5">
+        <img src="https://cdn2.iconfinder.com/data/icons/databases-and-cloud-technology/48/56-512.png" width="150px">
+        <h3>Oups, on dirait que le serveur est plein, veuillez revenir plus tard, nous sommes vraiment désolés. <br/>mais vous pouvez toujours utiliser la fonction d'urgence.</h3>
+        <button class="btn btn-primary" (click)="closeServerAlert()" style="margin-right: 15px;">FERMER</button>
+        <button class="btn btn-danger" (click)="closeServerAlert()"  routerLink="/declaration" style="margin-right: 15px;">URGENCE</button>
+        
+
+    </div>
+</div>

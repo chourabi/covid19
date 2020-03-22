@@ -1,0 +1,116 @@
+<div class="container-fluid my-5 main-declare">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page"> / AJOUTER UNE NOUVELLE CAS D'INFECTION</li>
+        </ol>
+    </nav>
+
+    <div class="container  ">
+        
+        <diV class="call-for-help">
+            <form [formGroup]="newcase" (ngSubmit)="sendDeclaration($event)">
+    
+    
+                <div class="form-group">
+                  <label ><i class="fas fa-user-alt"></i> PRÉNOM ET NOM </label>
+                  <input type="text" class="form-control"  placeholder="PRÉNOM ET NOM" name="fullname" formControlName="fullname" >
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-id-card"></i> CIN </label>
+                    <input type="text" class="form-control"  placeholder="CIN" name="cin" formControlName="cin" >
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-phone"></i> TÉLÉPHONE </label>
+                    <input type="text" class="form-control"  placeholder="TÉLÉPHONE" name="phone" formControlName="phone" >
+                </div>
+
+                <div class="form-group">
+                    <label ><i class="fas fa-arrow-location"></i> RÉGION ( المنطقة )</label>
+                    <select class="form-control" name="region" formControlName="region">
+                        <option value="l'Ariana">l'Ariana</option>
+                        <option value="Béja">Béja</option>
+                        <option value="Ben Arous">Ben Arous</option>
+                        <option value="Bizerte">Bizerte</option>
+                        <option value="Gabès">Gabès</option>
+                        <option value="Gafsa">Gafsa</option>
+                        <option value="Jendouba">Jendouba</option>
+                        <option value="Kairouan">Kairouan</option>
+                        <option value="Kasserie">Kasserie</option>
+                        <option value="Kébili">Kébili</option>
+                        <option value="Kef">Kef</option>
+                        <option value="Mahdia">Mahdia</option>
+                        <option value="Manouba">Manouba</option>
+                        <option value="Médenine">Médenine</option>
+                        <option value="Monastir">Monastir</option>
+                        <option value="Nabeul">Nabeul</option>
+                        <option value="Sfax">Sfax</option>
+                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                        <option value="Siliana">Siliana</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Tataouine">Tataouine</option>
+                        <option value="Tozeur">Tozeur</option>
+                        <option value="Tunis">Tunis</option>
+                        <option value="Zaghouan">Zaghouan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-male"></i> <i class="fas fa-female"></i>  SEXE </label>
+                    <select class="form-control" name="sex" formControlName="sex">
+                        <option value="1">MÂLE </option>
+                        <option value="2">FEMELLE </option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-clock"></i>  ÂGE </label>
+                    <input type="text" class="form-control"  placeholder="ÂGE" name="age" formControlName="age" >
+                </div>
+
+                <h6>
+                    SUR LA CARTE
+                </h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label ><i class="fas fa-map"></i>  longitude </label>
+                            <input type="text" class="form-control"  placeholder="longitude" name="longitude" formControlName="lng" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                                <label ><i class="fas fa-map"></i>  latitude </label>
+                                <input type="text" class="form-control"  placeholder="latitude" name="latitude" formControlName="lat" >
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="btns-block-new-case" *ngIf="!isLoading">
+                    <button type="submit" class="btn btn-primary"   style="margin-right: 15px;margin-bottom:15px" [disabled]="! newcase.valid" >ENVOYER </button>
+                    <button type="reset" class="btn btn-secondary" routerLink="/rns-admin" style="margin-right: 15px;margin-bottom:15px">ANNULER</button>
+                </div>
+                <div class="btns-block-new-case" *ngIf="isLoading">
+                    <div class="alert alert-info">
+                        ENVOI DE LA DEMANDE AUX SERVEURS ...
+                    </div>
+                </div>
+                <div class="btns-block-new-case" *ngIf="! isLoading">
+                    <div class="alert alert-danger" *ngIf="errorMessage.length !=0">
+                        {{errorMessage}}
+                    </div>
+                    <div class="alert alert-success" *ngIf="requestSent">
+                        {{successMessage}}
+                    </div>
+                    
+                    
+                </div>
+                
+                
+                
+
+              </form>
+        </diV>
+    
+    </div>

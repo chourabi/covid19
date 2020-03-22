@@ -1,0 +1,172 @@
+<div class="main-declare">
+    <div class="container  " *ngIf="locationIsAllowed">
+        
+        <div class="text-center">
+            <img src="https://firebasestorage.googleapis.com/v0/b/covid-19-tn.appspot.com/o/assets%2Fillustration-01.png?alt=media&token=ba5e749a-852c-4c81-b25b-d0f2f5bdaf92" class="top-title">
+        </div>
+        <h4 class="text-center"> <i class="fas fa-medkit"></i> JE PENSE QUE JE SUIS MALADE <i class="fas fa-medkit"></i></h4>
+        <hr/>
+        <diV class="call-for-help">
+            <form [formGroup]="declaration" (ngSubmit)="sendDeclaration($event)">
+    
+    
+                <div class="form-group">
+                  <label ><i class="fas fa-user-alt"></i> PRÉNOM ET NOM ( الاسم واللقب )</label>
+                  <input type="text" class="form-control"  placeholder="PRÉNOM ET NOM" name="fullname" formControlName="fullname" >
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-phone-square-alt"></i> TÉLÉPHONE ( رقم الهاتف )</label>
+                    <input type="text" class="form-control"  placeholder="TÉLÉPHONE" name="phone" formControlName="phone" >
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-arrow-location"></i> RÉGION ( المنطقة )</label>
+                    <select class="form-control" name="region" formControlName="region">
+                        <option value="l'Ariana">l'Ariana</option>
+                        <option value="Béja">Béja</option>
+                        <option value="Ben Arous">Ben Arous</option>
+                        <option value="Bizerte">Bizerte</option>
+                        <option value="Gabès">Gabès</option>
+                        <option value="Gafsa">Gafsa</option>
+                        <option value="Jendouba">Jendouba</option>
+                        <option value="Kairouan">Kairouan</option>
+                        <option value="Kasserie">Kasserie</option>
+                        <option value="Kébili">Kébili</option>
+                        <option value="Kef">Kef</option>
+                        <option value="Mahdia">Mahdia</option>
+                        <option value="Manouba">Manouba</option>
+                        <option value="Médenine">Médenine</option>
+                        <option value="Monastir">Monastir</option>
+                        <option value="Nabeul">Nabeul</option>
+                        <option value="Sfax">Sfax</option>
+                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                        <option value="Siliana">Siliana</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Tataouine">Tataouine</option>
+                        <option value="Tozeur">Tozeur</option>
+                        <option value="Tunis">Tunis</option>
+                        <option value="Zaghouan">Zaghouan</option>
+
+                        
+                        
+                        
+                        
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label ><i class="fas fa-male"></i> <i class="fas fa-female"></i>  SEXE ( الجنس)</label>
+                    <select class="form-control" name="sex" formControlName="sex">
+                        <option value="1">MÂLE (ذكر)</option>
+                        <option value="2">FEMELLE (أنثى)</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label ><i class="fas fa-clock"></i>  ÂGE ( العمر)</label>
+                    <input type="text" class="form-control"  placeholder="ÂGE" name="age" formControlName="age" >
+                </div>
+                
+                <hr/>
+                <h4>Quels sont les symptômes que vous avez ? <br/> (ما الأعراض التي تعاني منها؟)</h4>
+    
+                <table class="table ">
+                    <tbody class="table-striped">
+                        <tr>
+                        
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Une fièvre supérieure à 37,5°C<br/> (حمى فوق 37.5 درجة مئوية)
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="s1">
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Des signes respiratoires de type, toux, sensation d'oppression et/ou douleur thoracique, avec parfois dyspnée (essoufflement).
+                                    علامات الجهاز التنفسي مثل السعال والضيق و / أو ألم الصدر ، وأحيانًا مع ضيق في التنفس (ضيق في التنفس).
+                                </label>
+                            </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  formControlName="s2">
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Des frissons. (قشعريرة.)
+                                </label>
+                            </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  formControlName="s3">
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Des courbatures. (الأوجاع.)
+                                </label>
+                            </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  formControlName="s4">
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Une fatigue inhabituelle. (تعب غير عادي.)
+                                </label>
+                            </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  formControlName="s5">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Des maux de tête. (الصداع.)
+                                </label>
+                            </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  formControlName="s6">
+                        
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                    
+    
+    
+                </table>
+    
+    
+                <p> En appuyant sur Inscription, vous acceptez nos <a routerLink="/termsofuse">conditions d'utilisation.</a></p>
+                <button type="submit" class="btn btn-primary"  style="margin-right: 15px;margin-bottom:15px" [disabled]="! declaration.valid" >ENVOYER (إرسال)</button>
+                <button type="reset" class="btn btn-secondary" routerLink="/" style="margin-right: 15px;margin-bottom:15px">ANNULER (إلغاء)</button>
+                
+
+              </form>
+        </diV>
+    
+    </div>
+    
+    <div *ngIf="!locationIsAllowed" class="text-center container allow-position">
+        <h1><i class="fas fa-location-arrow"></i><br/> Autorisation de localisation</h1>
+        <p>Afin d'envoyer une demande d'aide, nous aurons besoin de votre emplacement, pour nous permettre de vous joindre facilement.</p>
+        <button class="btn btn-primary btn-sm" (click)="getUserLocation()" style="margin-right: 15px;margin-bottom:15px"  >LOCALISEZ-MOI</button>
+        <button type="reset" class="btn btn-secondary btn-sm" routerLink="/" style="margin-right: 15px;margin-bottom:15px" >ANNULER</button>
+    </div>
+    
+    
+    <div *ngIf="isLoading " class="loader text-center">
+        <img [src]="imgsrc" class="loading-img">
+        <h3 class="msg">{{messageLoader}}</h3>
+        <button class="btn btn-secondary btn-sm my-2" routerLink="/" *ngIf="requestIsSent">RETOUR À LA CARTE</button>
+    </div>
+</div>

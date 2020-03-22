@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+.mapboxgl-ctrl-logo{
+    display: none !important;
+}
+
+
+.mapboxgl-ctrl-bottom-right{
+    display: none !important;
+}
+
+
+p{
+    font-weight: 300;
+    color: #5a5a5a;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: 300 !important;
+    color: #565656;
+}
+
+html {
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE;
+  }
+  body::-webkit-scrollbar {
+    width: 11px;
+  }
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
+  
+
+
+.btns-block{
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 100000000000;
+}
+
+.btn-primary{
+    background-color: #e8821e !important;
+    color: #000033 !important;
+    border-color: #e8821e !important;
+}
+
+.btn-secondary{
+    background-color: #000033 !important;
+    color: #e8821e !important;
+    border-color: #000033 !important;
+}
+
+label{
+    color: #000033 !important;
+}
+
+
+.main-declare{
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/covid-19-tn.appspot.com/o/assets%2Fbackground-01.png?alt=media&token=e6516e63-2f3f-438f-b0a4-ab596bbe7f93);
+    background-position: center;
+    background-size: 100% auto;
+    min-height: 100vh;
+}

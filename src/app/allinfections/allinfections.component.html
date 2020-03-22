@@ -1,0 +1,241 @@
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">VOULEZ-VOUS VRAIMENT CONFIRMER CE CAS?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Rappelez-vous une fois confirmé, il sera visible par tous les citoyens. tu veux continuer?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ANNULER</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirmeCaseNow()">CONFIRMER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="btns-block">
+    <button class="btn btn-primary btn-rnd" routerLink="/rns-admin/newcase"> <i class="fas fa-plus"></i> NOUVELLE CAS D'INFECTION</button>
+  </div>
+
+
+<div class="container-fluid my-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page"> / Tous les infections ({{infections.length}})</li>
+        </ol>
+    </nav>
+
+    <diV class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <input type="search" class="form-control" placeholder="Recherche par nom,télephone" (keyup)="searchFor($event)"[(ngModel)]="searchQuery" />
+            </div>
+        </div>
+    </diV>
+
+    <div class="row" *ngIf="isLoading">
+        <div class="col-sm-12">
+            <div class="alert alert-info">
+                chargement des données...
+            </div>
+        </div>
+    </div>
+
+    <div class="row infections" *ngIf="! isLoading">
+        <div class="col-sm-12" *ngIf="infections.length==0">
+            <div class="alert alert-warning">
+                Aucun nouveau cas à afficher.
+            </div>
+        </div>
+        <div *ngFor="let infect of  infections" class="infect col-sm-4">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h5 class="card-title">{{infect.data.userinformations.fullname}}</h5>
+                    <a href="tel:{{infect.data.userinformations.phone}}"><i class="fas fa-phone-square-alt"></i> appeller le {{infect.data.userinformations.phone}}</a><br/>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{infect.data.position.latitude}},{{infect.data.position.longitude}}"><i class="fas fa-location-arrow"></i>Emplacement sur la carte</a>
+                    <p>{{ infect.data.addDate.toDate() | date:'medium'}}</p>
+                    <table width="100%">
+                        
+                        <tbody>
+                            <tr>
+                                <td>
+                                    REGION
+                                </td>
+                                <td>
+                                    {{ infect.data.userinformations.region }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    AGE
+                                </td>
+                                <td>
+                                    {{ infect.data.userinformations.age }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    SEXE
+                                </td>
+                                <td *ngIf="infect.data.userinformations.sex==1">
+                                    MALE
+                                </td>
+                                <td *ngIf="infect.data.userinformations.sex==2">
+                                   FEMELE
+                                </td>
+                                
+                            </tr>
+                            
+                            
+                            </tbody>
+                        </table>
+
+                        </div>
+                        <div class="col-sm-7">
+                            <h5 style="text-transform: uppercase;">symptôme</h5>
+                            <table width="100%">
+                                <thead>
+                                    <th>
+                                        ÉTIQUETTE
+                                    </th>
+                                    <th>
+                                        VALEUR
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            fièvre 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s1 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s1 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            signes respiratoires 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s2 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s2 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Des frissons 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s3 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s3 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>
+                                            Des courbatures 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s4 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s4 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            Une fatigue inhabituelle 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s5 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s5 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Des maux de tête 
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s6 ==true" >
+                                            <div class=" alert-success">
+                                                est vérifié
+                                            </div>
+                                        </td>
+                                        <td *ngIf=" infect.data.userinformations.s6 ==false" >
+                                            <div class=" alert-danger">
+                                                non vérifié
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="action-buttons">
+                            <button class="btn btn-danger btn-sm"  *ngIf="infect.data.stat==0 || infect.data.stat==1" data-toggle="modal" data-target="#exampleModal" (click)="confirmCase(infect.id)" style="margin-right: 15px;">CONFIRMER LE CAS</button>
+                            <button class="btn btn-warning btn-sm" *ngIf="infect.data.stat==0 || infect.data.stat==2" data-toggle="suss" data-target="#suss" (click)="suspacetCase(infect.id)" style="margin-right: 15px;">CAS SUSPECT</button>
+                            <button class="btn btn-info btn-sm"   (click)="deleteCase(infect.id)" >SUPPRIMER</button>
+                                    
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
