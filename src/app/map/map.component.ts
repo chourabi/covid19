@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
 
 
   constructor(private database: DatabaseService) {
-    mapboxgel.accessToken = environment.mapbox.access_token;
+    mapboxgel.accessToken = "pk.eyJ1IjoiY2hvdXJhYml0YWhlciIsImEiOiJjazR0MWllOWwxNXd4M25wNHI0aWJ6azNuIn0.Q765LjZgTSfrKLUB3exqDw";
 
     try {
       mapboxgel.setRTLTextPlugin(

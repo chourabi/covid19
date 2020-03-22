@@ -1,14 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { environment } from '../environments/environment';
 import { AngularFireModule, } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ChartsModule } from 'ng2-charts';
-
-
-export const firebaseCongig = environment.firebaseConfig;
-import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,7 +50,16 @@ import { StatisticmainblockComponent } from './statisticmainblock/statisticmainb
     MDBBootstrapModule.forRoot(),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(firebaseCongig),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCzxwXVdIZ76739pNkyz-V-itOwykKFblg",
+      authDomain: "covid-19-tn.firebaseapp.com",
+      databaseURL: "https://covid-19-tn.firebaseio.com",
+      projectId: "covid-19-tn",
+      storageBucket: "covid-19-tn.appspot.com",
+      messagingSenderId: "197724184793",
+      appId: "1:197724184793:web:3f68c0ded08f890f1adec8",
+      measurementId: "G-NY1C77JVFD"
+    }),
   ],
   
   providers: [],
