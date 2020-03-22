@@ -56,9 +56,6 @@ import { StatisticmainblockComponent } from './statisticmainblock/statisticmainb
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseCongig),
-    AgmCoreModule.forRoot({
-      apiKey:environment.google_map_key
-    })
   ],
   
   providers: [],
